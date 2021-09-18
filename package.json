@@ -1,0 +1,9 @@
+{
+  "name": "wasm-c-web-server",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "ssh://git@github.com/kobakazu0429/wasm-c-web-server.git",
+  "author": "kobakazu0429 <kobakazu10@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
