@@ -7,12 +7,20 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "start": "node ./src/index.mjs",
+    "dev": "nodemon ./src/index.mjs",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint \"./{src,test}/**/*.{js,mjs,ts,tsx,svelte}\" --fix",
     "lint:prettier": "prettier \"./{src,test}/**/*.{js,mjs,ts,tsx,svelte}\" --write"
   },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "ulid": "^2.3.0"
+  },
   "devDependencies": {
     "@kobakazu0429/eslint-config-base": "^2.1.3",
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.12"
   }
 }
