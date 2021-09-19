@@ -35,6 +35,7 @@ router.post("/", async (req, res) => {
   } catch (error) {
     console.log(error.stderr);
     const message = error.stderr
+      .trim()
       .replaceAll(
         "/Users/kazu/ghq/github.com/kobakazu0429/wasm-c-web-server/.tmp/",
         ""
