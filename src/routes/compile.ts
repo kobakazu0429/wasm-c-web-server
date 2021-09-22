@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
       code: CODE.OK,
       binary,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error.stderr);
     const message = error.stderr
       .trim()
@@ -51,13 +51,14 @@ router.post("/", async (req, res) => {
   }
 });
 
-const compileToWasm = async (src) => {
+const compileToWasm = async (src: string) => {
   const id = ulid();
   const rawFileName = `${id}.c`;
   const wasmFileName = `${id}.wasm`;
   const asyncWasmFileName = `${id}.async.wasm`;
 
-  const dirname = path.dirname(new URL(import.meta.url).pathname);
+  // const dirname = path.dirname(new URL(import.meta.url).pathname);
+  const dirname = __dirname;
   const tmp = path.join(dirname, "..", "..", ".tmp");
 
   const rawFilePath = path.resolve(path.join(tmp, rawFileName));
