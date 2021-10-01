@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  api-server:
+    build:
+      context: .
+    container_name: api-server
+    image: api-server
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    command: yarn start
+    ports:
+      - "3001:3001"
