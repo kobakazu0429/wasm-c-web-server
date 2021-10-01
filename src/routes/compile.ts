@@ -6,7 +6,7 @@ import { ulid } from "ulid";
 
 const pExec = promisify(exec);
 
-const CLANG_PATH = `/Users/kazu/workspace/wasi-sdk-12.0`;
+const CLANG_PATH = process.env.WASI_SDK!;
 const WASM_OPT_PATH = `/usr/local/bin/wasm-opt`;
 
 import { Router } from "express";

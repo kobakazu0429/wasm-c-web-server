@@ -10,6 +10,5 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3001
-    command: yarn start
     ports:
       - "3001:3001"
