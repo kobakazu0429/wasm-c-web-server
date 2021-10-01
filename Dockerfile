@@ -26,6 +26,12 @@ RUN tar xvzf binaryen-version_101-x86_64-linux.tar.gz
 ENV PATH /opt/binaryen-version_101/bin:$PATH
 ENV WASM_OPT /opt/binaryen-version_101/bin/wasm-opt
 
+# clangd (for LSP)
+RUN apt install -y lsb-release software-properties-common gnupg
+RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+RUN apt install -y clangd-13
+# clang-format-13
+ENV CLANGD /usr/bin/clangd-13
 
 WORKDIR $APP_ROOT
 CMD [ "yarn", "start" ]
