@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  api-server:
+    build:
+      context: .
+    container_name: api-server
+    image: api-server
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=50000
+    ports:
+      - "50000:50000"

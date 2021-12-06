@@ -6,8 +6,11 @@ import { ulid } from "ulid";
 
 const pExec = promisify(exec);
 
-const CLANG_PATH = `/Users/kazu/workspace/wasi-sdk-12.0`;
-const WASM_OPT_PATH = `/usr/local/bin/wasm-opt`;
+const CLANG_PATH = process.env.WASI_SDK;
+const WASM_OPT_PATH = process.env.WASM_OPT;
+
+if (!CLANG_PATH) throw new Error("CLANG_PATH not set");
+if (!WASM_OPT_PATH) throw new Error("WASM_OPT_PATH not set");
 
 import { Router } from "express";
 const router = Router();
@@ -33,7 +36,7 @@ router.post("/", async (req, res) => {
       binary,
     });
   } catch (error: any) {
-    console.log(error.stderr);
+    console.log(error);
     const message = error.stderr
       .trim()
       .replaceAll(

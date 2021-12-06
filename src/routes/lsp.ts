@@ -5,6 +5,9 @@ import * as rpc from "@codingame/monaco-jsonrpc";
 import * as server from "@codingame/monaco-jsonrpc/lib/server/index.js";
 import * as lsp from "vscode-languageserver";
 
+const CLANGD = process.env.CLANGD;
+if (!CLANGD) throw new Error("CLANGD not set");
+
 const wss = new ws.Server({
   noServer: true,
   perMessageDeflate: false,
@@ -46,7 +49,7 @@ const launch = (socket: rpc.IWebSocket) => {
   const socketConnection = server.createConnection(reader, writer, () =>
     socket.dispose()
   );
-  const serverConnection = server.createServerProcess("c", "clangd");
+  const serverConnection = server.createServerProcess("c", CLANGD);
   server.forward(socketConnection, serverConnection, (message) => {
     if (rpc.isRequestMessage(message)) {
       if (message.method === lsp.InitializeRequest.type.method) {
