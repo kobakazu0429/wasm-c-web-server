@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "ts-node ./src/index.ts",
-    "dev": "ts-node-dev ./src/index.ts",
+    "start": "NODE_ENV=production ts-node ./src/index.ts",
+    "dev": "NODE_ENV=development ts-node-dev ./src/index.ts",
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint \"./{src,test}/**/*.{js,mjs,ts,tsx,svelte}\" --fix",
     "lint:prettier": "prettier \"./{src,test}/**/*.{js,mjs,ts,tsx,svelte}\" --write"
