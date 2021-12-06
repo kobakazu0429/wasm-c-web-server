@@ -8,8 +8,6 @@ RUN yarn install
 
 COPY . $APP_ROOT
 COPY .clang-format /
-COPY privkey.pem $APP_ROOT/privkey.pem
-COPY fullchain.pem $APP_ROOT/fullchain.pem
 
 # wasi-sdk
 WORKDIR /opt
