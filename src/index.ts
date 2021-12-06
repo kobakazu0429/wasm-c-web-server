@@ -22,7 +22,7 @@ app.use("/compile", compile);
 const port = parseInt(process.env.PORT!, 10);
 
 let server: https.Server | http.Server;
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
   const options = {
     key: fs.readFileSync("privkey.pem"),
     cert: fs.readFileSync("fullchain.pem"),
