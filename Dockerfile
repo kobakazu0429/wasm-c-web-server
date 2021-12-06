@@ -7,6 +7,7 @@ COPY package.json yarn.lock $APP_ROOT
 RUN yarn install
 
 COPY . $APP_ROOT
+COPY .clang-format /
 
 # wasi-sdk
 WORKDIR /opt
