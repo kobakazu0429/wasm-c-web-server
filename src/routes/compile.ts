@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
       binary,
     });
   } catch (error: any) {
-    console.log(error.stderr);
+    console.log(error);
     const message = error.stderr
       .trim()
       .replaceAll(
