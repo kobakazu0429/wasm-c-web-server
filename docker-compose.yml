@@ -9,6 +9,6 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - PORT=3001
+      - PORT=50000
     ports:
-      - "3001:3001"
+      - "50000:50000"
