@@ -8,6 +8,8 @@ RUN yarn install
 
 COPY . $APP_ROOT
 COPY .clang-format /
+COPY /etc/letsencrypt/live/wasm-c-web-server.kaz.dev/privkey.pem $APP_ROOT/privkey.pem
+COPY /etc/letsencrypt/live/wasm-c-web-server.kaz.dev/fullchain.pem $APP_ROOT/fullchain.pem
 
 # wasi-sdk
 WORKDIR /opt
