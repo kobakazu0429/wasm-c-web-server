@@ -9,9 +9,10 @@
   "scripts": {
     "start": "NODE_ENV=development ts-node ./src/index.ts",
     "dev": "NODE_ENV=development ts-node-dev ./src/index.ts",
-    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint": "npm run type-check && npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint \"./{src,test}/**/*.{js,mjs,ts,tsx,svelte}\" --fix",
-    "lint:prettier": "prettier \"./{src,test}/**/*.{js,mjs,ts,tsx,svelte}\" --write"
+    "lint:prettier": "prettier \"./{src,test}/**/*.{js,mjs,ts,tsx,svelte}\" --write",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@codingame/monaco-jsonrpc": "^0.3.1",
