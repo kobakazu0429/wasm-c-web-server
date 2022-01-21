@@ -21,13 +21,13 @@ AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLambdasOnASingleLine: Inline
 AllowShortLoopsOnASingleLine: true
-AlwaysBreakAfterReturnType: All
+AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: No
 BinPackArguments: false
 BinPackParameters: false
 BreakBeforeBinaryOperators: All
-BreakBeforeBraces: Attach
+# BreakBeforeBraces: Attach
 BreakBeforeConceptDeclarations: false
 BreakBeforeTernaryOperators: true
 BreakStringLiterals: false
@@ -48,7 +48,7 @@ IndentWrappedFunctionNames: true
 KeepEmptyLinesAtTheStartOfBlocks: false
 LambdaBodyIndentation: Signature
 NamespaceIndentation: All
-PackConstructorInitializers: NextLine
+# PackConstructorInitializers: NextLine
 PointerAlignment: Right
 ReferenceAlignment: Pointer
 ReflowComments: false
@@ -66,21 +66,21 @@ SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: false
 SpacesInSquareBrackets: true
 UseTab: Never
-# BreakBeforeBraces: Custom
-# BraceWrapping:
-#   AfterCaseLabel: false
-#   AfterClass: false
-#   AfterControlStatement: Never
-#   AfterEnum: true
-#   AfterFunction: false
-#   AfterNamespace: false
-#   AfterStruct: false
-#   AfterUnion: false
-#   AfterExternBlock: false
-#   BeforeCatch: false
-#   BeforeElse: false
-#   BeforeLambdaBody: false
-#   BeforeWhile: false
-#   IndentBraces: false
-#   SplitEmptyRecord: false
-#   SplitEmptyNamespace: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: true
+  AfterFunction: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeCatch: false
+  BeforeElse: false
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
