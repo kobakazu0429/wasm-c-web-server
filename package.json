@@ -20,7 +20,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "ulid": "^2.3.0",
-    "vscode-languageserver": "^7.0.0",
+    "vscode-languageserver": "^8.0.0",
     "ws": "^8.2.2"
   },
   "devDependencies": {
