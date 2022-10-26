@@ -1,4 +1,4 @@
-FROM node:18.6.0-slim
+FROM node:18.11.0-slim
 ENV APP_ROOT /app/
 
 WORKDIR $APP_ROOT
