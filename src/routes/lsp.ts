@@ -1,14 +1,14 @@
-import type { IncomingMessage } from "http";
-import type { Socket } from "net";
-import ws from "ws";
-import * as rpc from "@codingame/monaco-jsonrpc";
-import * as server from "@codingame/monaco-jsonrpc/lib/server/index.js";
+import type { IncomingMessage } from "node:http";
+import type { Socket } from "node:net";
+import { WebSocketServer } from "ws";
+import * as rpc from "vscode-ws-jsonrpc";
+import * as server from "vscode-ws-jsonrpc/server";
 import * as lsp from "vscode-languageserver";
 
 const CLANGD = process.env.CLANGD;
 if (!CLANGD) throw new Error("CLANGD not set");
 
-const wss = new ws.Server({
+const wss = new WebSocketServer({
   noServer: true,
   perMessageDeflate: false,
 });
@@ -20,16 +20,16 @@ export const upgrader = (
 ) => {
   if (request.url === "/lsp") {
     wss.handleUpgrade(request, socket, head, (webSocket) => {
-      const socket = {
-        send: (content: any) =>
+      const socket: rpc.IWebSocket = {
+        send: (content) =>
           webSocket.send(content, (error) => {
             if (error) {
               throw error;
             }
           }),
-        onMessage: (cb: any) => webSocket.on("message", cb),
-        onError: (cb: any) => webSocket.on("error", cb),
-        onClose: (cb: any) => webSocket.on("close", cb),
+        onMessage: (cb) => webSocket.on("message", cb),
+        onError: (cb) => webSocket.on("error", cb),
+        onClose: (cb) => webSocket.on("close", cb),
         dispose: () => webSocket.close(),
       };
       // launch the server when the web socket is opened
@@ -49,9 +49,14 @@ const launch = (socket: rpc.IWebSocket) => {
   const socketConnection = server.createConnection(reader, writer, () =>
     socket.dispose()
   );
+
   const serverConnection = server.createServerProcess("c", CLANGD);
+  if (!serverConnection) {
+    throw new Error("serverConnection is undefined.");
+  }
+
   server.forward(socketConnection, serverConnection, (message) => {
-    if (rpc.isRequestMessage(message)) {
+    if (lsp.Message.isRequest(message)) {
       if (message.method === lsp.InitializeRequest.type.method) {
         const initializeParams = message.params as lsp.InitializeParams;
         initializeParams.processId = process.pid;

@@ -1,5 +1,6 @@
 import path from "node:path";
 import fs from "node:fs/promises";
+import url from "node:url";
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
 import { ulid } from "ulid";
@@ -60,8 +61,7 @@ const compileToWasm = async (src: string) => {
   const wasmFileName = `${id}.wasm`;
   const asyncWasmFileName = `${id}.async.wasm`;
 
-  // const dirname = path.dirname(new URL(import.meta.url).pathname);
-  const dirname = __dirname;
+  const dirname = path.dirname(url.fileURLToPath(import.meta.url));
   const tmp = path.join(dirname, "..", "..", ".tmp");
 
   const rawFilePath = path.resolve(path.join(tmp, rawFileName));

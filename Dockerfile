@@ -1,14 +1,6 @@
 FROM node:18.11.0-slim
 ENV APP_ROOT /app/
 
-WORKDIR $APP_ROOT
-
-COPY package.json yarn.lock $APP_ROOT
-RUN yarn install
-
-COPY . $APP_ROOT
-COPY .clang-format /
-
 # wasi-sdk
 WORKDIR /opt
 RUN apt update
@@ -33,6 +25,13 @@ RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 RUN apt install -y clangd-13
 # clang-format-13
 ENV CLANGD /usr/bin/clangd-13
+
+WORKDIR $APP_ROOT
+COPY package.json yarn.lock $APP_ROOT
+RUN yarn install
+
+COPY . $APP_ROOT
+COPY .clang-format /
 
 WORKDIR $APP_ROOT
 CMD [ "yarn", "start" ]

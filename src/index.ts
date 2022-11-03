@@ -1,10 +1,10 @@
-import fs from "fs";
-import https from "https";
-import type http from "http";
+import fs from "node:fs";
+import https from "node:https";
+import type http from "node:http";
 import express from "express";
 import cors from "cors";
-import compile from "./routes/compile";
-import { upgrader as lspUpgrader } from "./routes/lsp";
+import compile from "./routes/compile.js";
+import { upgrader as lspUpgrader } from "./routes/lsp.js";
 
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception: ", err.toString());
