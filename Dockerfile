@@ -1,4 +1,4 @@
-FROM node:18.20.7-slim
+FROM node:22.23.5-slim
 ENV APP_ROOT /app/
 
 # wasi-sdk
